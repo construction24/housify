@@ -16,11 +16,13 @@ function HeroSection() {
         <div className="flex flex-col gap-4 justify-center items-center text-center animate-slide-in-right">
           <h1 className="-mb-7">Find your place of dream</h1>
           <p>We are glad to have you around. Feel free to browse our website</p>
-          <Button className="w-[40%] mt-5">
-            <Link href="/contact">
+
+          <Link href="/contact" className="w-[40%] mt-5">
+          <Button>
               Contact Us <FiArrowRight className="inline-block ml-1" />
-            </Link>
           </Button>
+          </Link>
+
         </div>
 
         <img

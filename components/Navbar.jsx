@@ -42,7 +42,6 @@ function Navbar() {
         dropdown: false,
     },
     { label: "Contact Us", link: "/contact", dropdown : false },
-    // Add more navigation items as needed
   ];
 
   return (
@@ -58,8 +57,8 @@ function Navbar() {
             {
                 navItems.map((navItem) => (
                     !navItem.dropdown ? (
-                        <Menubar className = "text-sm font-medium border-none p-3"><Link href= {navItem.link}>{navItem.label}</Link></Menubar>
-                    ) : (<Menubar className = "p-3 border-none">
+                        <Menubar className = "text-sm font-medium border-none p-3 hover:text-primary"><Link href= {navItem.link}>{navItem.label}</Link></Menubar>
+                    ) : (<Menubar className = "p-3 border-none hover:text-primary">
                             <MenubarMenu>
                                 <MenubarTrigger>{navItem.label}</MenubarTrigger>
                                     <MenubarContent >
