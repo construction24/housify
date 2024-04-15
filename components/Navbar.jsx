@@ -55,16 +55,16 @@ function Navbar() {
 
         <div className=" menu-bar flex justify-between items-center">
             {
-                navItems.map((navItem) => (
+                navItems.map((navItem, idx) => (
                     !navItem.dropdown ? (
-                        <Menubar className = "text-sm font-medium border-none p-3 hover:text-primary"><Link href= {navItem.link}>{navItem.label}</Link></Menubar>
-                    ) : (<Menubar className = "p-3 border-none hover:text-primary">
+                        <Menubar className = "text-sm font-medium border-none p-3 hover:text-primary" key = {idx}><Link href= {navItem.link}>{navItem.label}</Link></Menubar>
+                    ) : (<Menubar className = "p-3 border-none hover:text-primary" key = {idx}>
                             <MenubarMenu>
                                 <MenubarTrigger>{navItem.label}</MenubarTrigger>
                                     <MenubarContent >
                                         {
-                                            navItem.children.map(child => (
-                                                <Link href={child.link}><MenubarItem>{child.label}</MenubarItem></Link>
+                                            navItem.children.map((child, idx) => (
+                                                <Link href={child.link} key = {idx}><MenubarItem>{child.label}</MenubarItem></Link>
                                                 
                                             ))
                                         }

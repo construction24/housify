@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { OneTimePassword } from "./OneTimePassword";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,7 @@ const Signin = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const [verificationSent, setVerificationSent] = useState(false); // Track if verification code has been sent
 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
@@ -58,15 +60,14 @@ const Signin = () => {
     }
 
     if (isValid) {
-      // Your logic to send verification code based on the selected option
+      // logic to send verification code based on the selected option
       if (verificationOption === "phone") {
         console.log("Sending verification code to", phoneNumber);
       } else {
         console.log("Sending verification code to", email);
       }
-      // Reset inputs after sending the code
-      setPhoneNumber("");
-      setEmail("");
+      
+      setVerificationSent(true); // Set verification sent to true
     }
   };
 
@@ -84,6 +85,7 @@ const Signin = () => {
         phoneRef.current.focus();
       }, 0);
     }
+    setVerificationSent(false); // Reset verification sent when switching option
   };
 
   return (
@@ -95,61 +97,77 @@ const Signin = () => {
             {/* login box start */}
 
             <div className="border border-primary shadow-lg animate-slide-in-right relative mx-auto max-w-[525px] overflow-hidden rounded-lg px-10 py-16 text-center sm:px-12 md:px-[60px]">
-              <h2>Welcome to Keshav Builders</h2>
-              <Link href = "/"><Image src="/logo.ico" width={80} height={80} className="m-auto mb-5 mt-5"></Image></Link>
-              <form onSubmit={handleSendVerificationCode}>
-                {verificationOption === "email" && (
-                  <div>
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      value={email}
-                      ref={emailRef}
-                      onChange={handleEmailChange}
-                      className="border border-input focus:border-none"
-                    />
-                    <span className="text-red-500 inline-block pt-4">{emailError}</span>
-                  </div>
-                )}
-                {verificationOption === "phone" && (
-                  <div>
-                    <Input
-                      type="tel"
-                      name="phoneNumber"
-                      placeholder="Phone Number"
-                      value={phoneNumber}
-                      ref={phoneRef}
-                      onChange={handlePhoneNumberChange}
-                      className="border border-input focus:border-none"
-                    />
-                    <span className="text-red-500 inline-block pt-4">{phoneError}</span>
-                  </div>
+              {!verificationSent && <h2>Welcome to Keshav Builders</h2>}
+              {!verificationSent && <Link href="/"><Image src="/logo.ico" width={80} height={80} className="m-auto mb-5 mt-5" /></Link>}
+              {!verificationSent && (
+                <form onSubmit={handleSendVerificationCode}>
+                  {verificationOption === "email" && (
+                    <div>
+                      <Input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={email}
+                        ref={emailRef}
+                        onChange={handleEmailChange}
+                        className="border border-input focus:border-none"
+                      />
+                      <span className="text-red-500 inline-block pt-4">{emailError}</span>
+                    </div>
+                  )}
+                  {verificationOption === "phone" && (
+                    <div>
+                      <Input
+                        type="tel"
+                        name="phoneNumber"
+                        placeholder="Phone Number"
+                        value={phoneNumber}
+                        ref={phoneRef}
+                        onChange={handlePhoneNumberChange}
+                        className="border border-input focus:border-none"
+                      />
+                      <span className="text-red-500 inline-block pt-4">{phoneError}</span>
+                    </div>
+                  )}
+
+                {/* Conditionally render SMS and verification code message */}
+                {!verificationSent && (
+                  <p className="text-base text-body-color dark:text-dark-6">
+                    We will send you an SMS with a verification code and an email with a verification link.
+                  </p>
                 )}
 
-                <p className="text-base text-body-color dark:text-dark-6">
-                  We will send you an SMS with a verification code and an email with a verification link.
-                </p>
+                  <div className="m-7">
+                    <Button type="submit">Send Verification Code</Button>
+                  </div>
+                </form>
+              )}
 
-                <div className="m-7">
-                  <Button type="submit">Send Verification Code</Button>
+              {verificationSent && (
+                <div>
+                  <OneTimePassword 
+                    methodOfLogin={verificationOption === "phone" ? "sms" : "Email"}
+                    userDetail={verificationOption === "phone" ? phoneNumber : email}
+                  />
                 </div>
-              </form>
+              )}
+                
+              {!verificationSent && (
+                <p className="mt-4">
+                  <button
+                    className="text-primary hover:underline focus:outline-none"
+                    onClick={handleSwitchVerificationOption}
+                  >
+                    {verificationOption === "phone"
+                      ? "Use your email instead"
+                      : "Use your phone number instead"}
+                  </button>
+                </p>
+              )}
 
-              <p className="mt-4">
-                <button
-                  className="text-primary hover:underline focus:outline-none"
-                  onClick={handleSwitchVerificationOption}
-                >
-                  {verificationOption === "phone"
-                    ? "Use your email instead"
-                    : "Use your phone number instead"}
-                </button>
-              </p>
             </div>
 
             {/* login box end */}
-            
 
           </div>
         </div>
