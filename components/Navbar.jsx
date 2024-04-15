@@ -77,7 +77,7 @@ function Navbar() {
 
         <div className="flex justify-center items-center">
           <ModeToggle className= "mr-2"/>
-          <Link href = "/signup"> <Button variant = "secondary" className="m-2 border border-black">Sign up</Button> </Link>
+          {/* <Link href = "/signup"> <Button variant = "secondary" className="m-2 border border-black">Sign up</Button> </Link> */}
           <Link href = "/login"> <Button className="ml-2"> Log in</Button> </Link>
         </div>
       </div>
