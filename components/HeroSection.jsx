@@ -1,17 +1,17 @@
 import Navbar from "./Navbar";
-import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi"; // Importing the arrow icon
 
 function HeroSection() {
+  
   return (
     
     <div className="h-[90vh]">
 
       <Navbar />
 
-      <div className="flex justify-around items-center h-[90vh] p-20 pt-0">
+      <div className="flex flex-col lg:flex-row justify-around items-center h-[90vh] p-20 pt-0">
 
         <div className="flex flex-col gap-4 justify-center items-center text-center animate-slide-in-right">
           <h1 className="-mb-7">Find your place of dream</h1>
@@ -24,13 +24,15 @@ function HeroSection() {
           </Link>
 
         </div>
-
-        <img
-          src="/hero-image.png"
-          height= {400}
-          width={400}
-          className="mt-14 rounded-t-full"
-        ></img>
+        
+        <div className="hidden lg:block">
+          <img
+            src="/hero-image.png"
+            height= {400}
+            width={400}
+            className="mt-14 rounded-t-full"
+          ></img>
+        </div>
 
       </div>
 
