@@ -8,13 +8,15 @@ import {
 } from "@/components/ui/input-otp";
 
 import { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export function OneTimePassword({methodOfLogin, userDetail}) {
   const [value, setValue] = useState("");
+  const router = useRouter();
+
   const onComplete = () => {
     console.log(value);
-    redirect("/");
+    router.push("/");
   };
 
   return (
