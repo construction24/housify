@@ -37,7 +37,7 @@ function Navbar() {
         ],
     },
     {
-        label: "Construction Material",
+        label: "Construction Material & items",
         link: "/construction-material",
         dropdown: false,
     },
@@ -49,7 +49,7 @@ function Navbar() {
       <div className="flex justify-between items-center">
         <div className="logo">
           <Link href="/">
-            <Image src="/logo.ico" width={50} height={50} />
+            <Image src="/logo.ico" width={50} height={50}  className="rounded-full"/>
           </Link>
         </div>
 

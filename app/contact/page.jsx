@@ -8,9 +8,9 @@ function Contact() {
   return (
     <div className='container'>
       <Navbar/>
-      <div>
-            contact us
+        <div className=''>
           
+            
         </div>
     </div>
   )
