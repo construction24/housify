@@ -45,7 +45,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="mw-[1200px] w-[90%] m-auto p-5">
+    <div className="container mt-5">
       <div className="flex justify-between items-center">
         <div className="logo">
           <Link href="/">
