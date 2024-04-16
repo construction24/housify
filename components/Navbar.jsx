@@ -3,7 +3,7 @@
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ModeToggle } from "./modeToggleBtn";
+import { ModeToggle } from "./ModeToggleBtn";
 
 import {
   Menubar,
