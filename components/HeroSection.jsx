@@ -1,3 +1,5 @@
+
+"use client";
 import Navbar from "./Navbar";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -18,7 +20,7 @@ function HeroSection() {
           <p>We are glad to have you around. Feel free to browse our website</p>
 
           <Link href="/contact" className="w-[40%] mt-5">
-          <Button>
+          <Button className="-ml-4">
               Contact Us <FiArrowRight className="inline-block ml-1" />
           </Button>
           </Link>
