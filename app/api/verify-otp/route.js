@@ -1,8 +1,7 @@
 
 import * as jwt from "jsonwebtoken";
 import { supabase } from "@/lib/utils";
-import { stringify } from "postcss";
-import { Network } from "lucide-react";
+
 
 export async function POST(req) {
 
