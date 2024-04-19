@@ -25,7 +25,7 @@ export async function POST(req) {
         from: 'Acme <onboarding@resend.dev>',
         to: email,
         subject: 'Construction Key',
-        react: EmailTemplate({ name: otp }),
+        react: EmailTemplate({ otp }),
       });
   
       return Response.json(JSON.stringify({token}));

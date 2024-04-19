@@ -1,5 +1,5 @@
-export const EmailTemplate = ({ name }) => (
+export const EmailTemplate = ({ otp }) => (
   <div>
-    <h1>Welcome, {name}!</h1>
+    <h1>Your opt is: <b>{otp}</b> </h1>
   </div>
 );
