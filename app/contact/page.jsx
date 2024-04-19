@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react'
 import Navbar from '@/components/Navbar'
 import { Input } from '@/components/ui/input'
@@ -31,12 +31,12 @@ function Contact() {
 
 
 
-        <div className='border border-[1px]  h-[90%] w-[90%] flex flex-col justify-center items-center p-4 shadow-lg rounded-md m-2 p-4 '>
+        <div className=' border-[1px]  h-[90%] w-[90%] flex flex-col justify-center items-center p-4 shadow-lg rounded-md m-2 '>
         <div className='  w-full flex flex-col justify-center items-center mb-10'>
           
           
           
-        <div className=' h-[90%] w-[85%] flex flex-col sm:flex-col lg:flex-row md:flex-col justify-center items-center sm:flex-row lg:flex-row md:flex-row'>
+        <div className=' h-[90%] w-[85%] flex flex-col sm:flex-col lg:flex-row md:flex-col justify-center items-center  '>
   <div className=' w-full sm:w-1/4 flex lg:flex-col md:flex-col sm:flex-row flex-col justify-center items-center mb-4 sm:mb-0'>
     <div className=' h-12 w-full flex justify-center items-center mb-2'>
       <img src="/contact/location.png" height={50} width={50} alt="" />
@@ -72,10 +72,10 @@ function Contact() {
             <div className='w-full flex justify-center items-center text-2xl font-semibold text-primary mb-4'>
               Contact Us
             </div>
-            <div className='w-[70%] mb-4'><Input placeholder="Your Name" name="Name" value={formData.Name} onChange={onChangeHandler} className="border border-[#39393a] border-[2px]" /></div>
-            <div className='w-[70%] mb-4'><Input placeholder="Your Email" name="email" value={formData.email} onChange={onChangeHandler} className="border border-[#39393a] border-[2px]" /></div>
-            <div className='w-[70%] mb-4'><Input placeholder="Your phone no." name="phone" value={formData.phone} onChange={onChangeHandler} className="border border-[#39393a] border-[2px]" /></div>
-            <div className='w-[70%] mb-4'><Textarea placeholder="Your Message" name="message" value={formData.message} onChange={onChangeHandler} className="border border-[#39393a] border-[2px]" /></div>
+            <div className='w-[70%] mb-4'><Input placeholder="Your Name" name="Name" value={formData.Name} onChange={onChangeHandler} className=" border-[#39393a] border-[2px]" /></div>
+            <div className='w-[70%] mb-4'><Input placeholder="Your Email" name="email" value={formData.email} onChange={onChangeHandler} className=" border-[#39393a] border-[2px]" /></div>
+            <div className='w-[70%] mb-4'><Input placeholder="Your phone no." name="phone" value={formData.phone} onChange={onChangeHandler} className=" border-[#39393a] border-[2px]" /></div>
+            <div className='w-[70%] mb-4'><Textarea placeholder="Your Message" name="message" value={formData.message} onChange={onChangeHandler} className=" border-[#39393a] border-[2px]" /></div>
             <div className='w-full flex justify-center items-start mt-4'>
               <Button onClick={handleSubmit}>Submit</Button>
             </div>
