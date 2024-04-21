@@ -8,9 +8,9 @@
   box-sizing: border-box;
 }
 
-body{
+/* body{
   overflow: hidden;
-}
+} */
 
 @layer base {
   :root {

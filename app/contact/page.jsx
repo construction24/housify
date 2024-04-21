@@ -41,7 +41,7 @@ function Contact() {
                     src="/contact/location.png"
                     height={50}
                     width={50}
-                    alt=""
+                    alt="this is location logo"
                   />
                 </div>
                 <div className=" text-sm text-center mt-2">
@@ -50,7 +50,7 @@ function Contact() {
               </div>
               <div className=" w-full sm:w-1/4 flex lg:flex-col md:flex-col sm:flex-row flex-col justify-center items-center mb-4 sm:mb-0">
                 <div className=" h-12 w-full flex justify-center items-center mb-2">
-                  <img src="/contact/call.png" height={50} width={50} alt="" />
+                  <img src="/contact/call.png" height={50} width={50} alt="this is call logo" />
                 </div>
                 <div className=" text-sm text-center mt-2">
                   Phone: 8882108780
@@ -58,7 +58,7 @@ function Contact() {
               </div>
               <div className=" w-full sm:w-1/4 flex lg:flex-col md:flex-col sm:flex-row flex-col justify-center items-center mb-4 sm:mb-0">
                 <div className=" h-12 w-full flex justify-center items-center mb-2">
-                  <img src="/contact/email.png" height={50} width={50} alt="" />
+                  <img src="/contact/email.png" height={50} width={50} alt="this is email logo" />
                 </div>
                 <div className=" text-sm text-center mt-2">
                   Email: srivastavajaya175@gmail.com
@@ -70,7 +70,7 @@ function Contact() {
                     src="/contact/website.png"
                     height={50}
                     width={50}
-                    alt=""
+                    alt="this is website logo"
                   />
                 </div>
                 <div className=" text-sm text-center mt-2">
@@ -132,7 +132,7 @@ function Contact() {
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.2511463738547!2d77.0514563967895!3d28.682133000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d05cb546dbc05%3A0x80e4a5f90fd6e38e!2sNangloi%20Railway%20Station!5e0!3m2!1sen!2sin!4v1713279310723!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
-                    style={{ border: 0 }}
+                    className="border-0"
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

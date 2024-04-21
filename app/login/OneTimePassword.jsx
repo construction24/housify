@@ -23,7 +23,7 @@ export function OneTimePassword({methodOfLogin, userDetail}) {
     <div className="p-10 flex flex-col justify-center items-center gap-8">
       <div>
         <h2>OTP Verification</h2>
-        <p>One Time Password (OTP) has been sent vai {methodOfLogin} to {methodOfLogin === "phone" ? "+91" : ""}<b>{userDetail}</b> </p>
+        <p>One Time Password (OTP) has been sent via {methodOfLogin} to {methodOfLogin === "phone" ? "+91" : ""}<b>{userDetail}</b> </p>
         <p>Please enter the OTP to verify your account</p>
       </div>
       
