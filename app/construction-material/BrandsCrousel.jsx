@@ -55,7 +55,7 @@ function BrandsCarousel({className = ""}) {
         >
           <CarouselContent>
             {brandImages.map((image, index) => (
-              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5">
+              <CarouselItem key={index} className="basis-1/3 md:basis-1/3 lg:basis-1/5">
                 {/* Adjust the className as needed to style the image */}
                 <Image 
                 src={image} 
