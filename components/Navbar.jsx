@@ -13,7 +13,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-function Navbar({ className = ""}) {
+function Navbar({ className = "" }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -42,8 +42,18 @@ function Navbar({ className = ""}) {
     },
     {
       label: "Construction Material & items",
-      link: "/construction-material",
-      dropdown: false,
+      dropdown: true,
+      children: [
+        { label: "Cement", link: "/construction-material/cement" },
+        {
+          label: "Bricks and blocks",
+          link: "/construction-material/bricks-and-blocks",
+        },
+        {
+          label: "bulk material",
+          link: "/construction-material/bulk-material",
+        },
+      ],
     },
     { label: "Contact Us", link: "/contact", dropdown: false },
   ];
@@ -97,7 +107,7 @@ function Navbar({ className = ""}) {
           {navItems.map((navItem, idx) =>
             !navItem.dropdown ? (
               <Menubar
-                className="text-sm font-medium border-none p-3 hover:text-primary"
+                className="text-sm font-medium border-none p-3 hover:text-primary hover:underline"
                 key={idx}
               >
                 <Link href={navItem.link}>{navItem.label}</Link>
@@ -109,11 +119,15 @@ function Navbar({ className = ""}) {
                   key={idx}
                 >
                   <MenubarMenu>
-                    <MenubarTrigger>{navItem.label}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-pointer hover:underline">
+                      {navItem.label}
+                    </MenubarTrigger>
                     <MenubarContent>
                       {navItem.children.map((child, idx) => (
                         <Link href={child.link} key={idx}>
-                          <MenubarItem>{child.label}</MenubarItem>
+                          <MenubarItem className="cursor-pointer hover:underline">
+                            {child.label}
+                          </MenubarItem>
                         </Link>
                       ))}
                     </MenubarContent>
@@ -175,4 +189,3 @@ function Navbar({ className = ""}) {
 }
 
 export default Navbar;
-

@@ -2,7 +2,7 @@ import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="sm:container mx-w-[1200px] sm:w-[90%]">
          <HeroSection/>
     </main>
   );

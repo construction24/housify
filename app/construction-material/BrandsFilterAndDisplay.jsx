@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import ProductCard from "./ProductCard";
+
 
 function BrandsFilterAndDisplay() {
   // Define lists of categories and brands
@@ -31,8 +33,6 @@ function BrandsFilterAndDisplay() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  console.log(selectedCategories)
-
   // Handle category change
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
@@ -59,10 +59,10 @@ function BrandsFilterAndDisplay() {
   };
 
   return (
-    <div className="flex flex-col mt-4">
+    <div className="flex flex-col">
       {/* Display selected filters */}
       {(selectedCategories.length > 0 || selectedBrands.length > 0) && (
-        <div className="mb-8 pl-4">
+        <div className="mb-8 pl-4 mt-10">
           <div>Showing results for:</div>
           {selectedCategories.length > 0 && (
             <div>
@@ -128,9 +128,10 @@ function BrandsFilterAndDisplay() {
       )}
 
       {/* Desktop filter section */}
-      <div className="flex">
+      <div className="flex gap-10">
+
         {/* Sidebar filter */}
-        <div className="filter-container pr-14 hidden md:block">
+        <div className="filter-container hidden md:block basis-1/4">
           <h2 className="font-bold mb-3">Filter By</h2>
 
           {/* Sub-Categories */}
@@ -173,9 +174,20 @@ function BrandsFilterAndDisplay() {
         </div>
 
         {/* Products Display Area */}
-        <div className=" border w-full">
+        <div className="py-10 w-full flex justify-center sm:justify-start items-center flex-wrap gap-16">
           {/* Add your product cards or components here */}
-          Product cards...
+          
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          
         </div>
       </div>
     </div>
