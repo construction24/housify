@@ -8,7 +8,7 @@ export default function page() {
   return (
     <div>
         <CategoryLayout
-            imagePath = "/construction-material-pages/category_banner_cement.png"        
+            imagePath = "/construction-material-pages/category_banner_cement.webp"        
         />
     </div>
   )

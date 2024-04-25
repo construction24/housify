@@ -5,7 +5,7 @@ function page() {
   return (
     <div>
         <CategoryLayout
-            imagePath = "/construction-material-pages/category_banner_bricks_and_blocks.png"
+            imagePath = "/construction-material-pages/category_banner_Bricks-and-Blocks.webp"
         />
     </div>
   )
