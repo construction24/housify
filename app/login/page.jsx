@@ -98,7 +98,7 @@ const Signin = () => {
 
             <div className="border border-primary shadow-lg animate-slide-in-right relative mx-auto max-w-[525px] overflow-hidden rounded-lg px-10 py-16 text-center sm:px-12 md:px-[60px]">
               {!verificationSent && <h2>Welcome to Keshav Builders</h2>}
-              {!verificationSent && <Link href="/"><Image src="/logo.ico" width={80} height={80} className="m-auto mb-5 mt-5 rounded-full" /></Link>}
+              {!verificationSent && <Link href="/"><Image src="/logo.ico" width={80} height={80} className="m-auto mb-5 mt-5 rounded-full" alt = "logo"/></Link>}
               {!verificationSent && (
                 <form onSubmit={handleSendVerificationCode}>
                   {verificationOption === "email" && (

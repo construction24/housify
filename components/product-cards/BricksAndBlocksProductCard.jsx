@@ -60,8 +60,8 @@ const BricksAndBlocksProductCard = ({
           <div className="flex justify-between mb-6">
             <label className="text-md">Bag</label>
             <select className="w-[10rem] border text-sm">
-              {bagTypes.map((bagType) => (
-                <option value={bagType}>{bagType}</option>
+              {bagTypes.map((bagType, index) => (
+                <option value={bagType} key = {index}>{bagType}</option>
               ))}
             </select>
           </div>
