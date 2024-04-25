@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ModeToggleBtn";
-import { ShoppingCart, Menu } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import {
   Menubar,
   MenubarContent,
@@ -42,7 +42,7 @@ function Navbar({ className = "" }) {
       ],
     },
     {
-      label: "Construction Material & items",
+      label: "Construction Material",
       dropdown: true,
       children: [
         { label: "Cement", link: "/construction-material/cement" },
@@ -60,72 +60,142 @@ function Navbar({ className = "" }) {
   ];
 
   return (
-    <div className={`container mt-6 ${className}`}>
-
-      {/* navbar container */}
+    <div className={`container mt-6 mb-5 ${className}`}>
+      {/* Navbar container */}
       <div className="navbar-container flex justify-between items-center">
+        {/* Hamburger Menu Button */}
+        <button
+          className="lg:hidden p-2"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+        >
+          {/* Conditional rendering of the hamburger menu button */}
+          {isOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <div className="space-y-2">
+              <div className="w-6 h-0.5 bg-secondary-foreground"></div>
+              <div className="w-6 h-0.5 bg-secondary-foreground"></div>
+              <div className="w-6 h-0.5 bg-secondary-foreground"></div>
+            </div>
+          )}
+        </button>
 
-            {/* logo of the website */}
-            <div className="logo hidden lg:block">
-              <Link href="/">
-                <Image
-                  src="/logo.ico"
-                  alt="logo"
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
+        {/* Logo (shown on large screens) */}
+        <div className="logo hidden lg:block">
+          <Link href="/">
+            <Image
+              src="/logo.ico"
+              alt="logo"
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+          </Link>
+        </div>
+
+        {/* Navigation items (shown on large screens) */}
+        <div className="hidden lg:flex items-center space-x-4">
+          {navItems.map((navItem, idx) =>
+            !navItem.dropdown ? (
+              <Link
+                href={navItem.link}
+                key={idx}
+                className="text-sm font-medium hover:text-primary hover:underline px-4 py-2"
+              >
+                {navItem.label}
               </Link>
-            </div>
+            ) : (
+              <Menubar className = "border-none" key={idx}>
+                <MenubarMenu>
+                  <MenubarTrigger className="px-4 py-2 cursor-pointer">
+                    {navItem.label}
+                  </MenubarTrigger>
+                  <MenubarContent className="flex flex-col">
+                    {navItem.children.map((child, idx) => (
+                      <Link href={child.link} key={idx}>
+                        <MenubarItem className="cursor-pointer hover:underline px-4 py-2">
+                          {child.label}
+                        </MenubarItem>
+                      </Link>
+                    ))}
+                  </MenubarContent>
+                </MenubarMenu>
+              </Menubar>
+            )
+          )}
+        </div>
 
-
-            {/* navItems */}
-            <div className="navItems items-center lg:flex  ">
-              {navItems.map((navItem, idx) =>
-                !navItem.dropdown ? (
-                  <Menubar
-                    className="text-sm font-medium border-none p-2 hover:text-primary hover:underline"
-                    key={idx}
-                  >
-                    <Link href={navItem.link}>{navItem.label}</Link>
-                  </Menubar>
-                ) : (
-                  <Menubar
-                    key={idx}
-                    className="text-sm font-medium border-none p-1 hover:text-primary hover:underline"
-                  >
-                    <MenubarMenu>
-                      <MenubarTrigger>{navItem.label}</MenubarTrigger>
-                      <MenubarContent>
-                        {navItem.children.map((child, idx) => (
-                          <Link href={child.link} key={idx}>
-                            <MenubarItem className="cursor-pointer hover:underline">
-                              {child.label}
-                            </MenubarItem>
-                          </Link>
-                        ))}
-                      </MenubarContent>
-                    </MenubarMenu>
-                  </Menubar>
-                )
-              )}
-
-            </div>
-
-        {/* theme toggle button, cart and login button */}
-        <div className="flex gap-5 items-center">
-          {/* theme toggle button */}
-          <ModeToggle className="" />
-
-          {/* shopping cart icon */}
+        {/* Right side of the navbar */}
+        <div className="flex gap-5 items-center lg:space-x-4">
+          {/* Shopping cart icon */}
           <Link href="/">
             <ShoppingCart />
           </Link>
 
-          {/* login button */}
+          {/* Theme toggle button */}
+          <ModeToggle className="" />
+
+          {/* Login button */}
           <Link href="/login">
             <Button className="ml-2">Log in</Button>
           </Link>
+        </div>
+
+        {/* Sliding menu */}
+        <div
+          className={`fixed top-0 left-0 w-64 h-screen border bg-background shadow-md p-4 z-40 transition-transform transform ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:hidden`}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4"
+            onClick={toggleMenu}
+            aria-label="Close navigation menu"
+          >
+            <X size={24} className="text-secondary-foreground" />
+          </button>
+
+          {/* Logo (shown in the sliding menu) */}
+          <div className="logo mb-4">
+            <Link href="/">
+              <Image
+                src="/logo.ico"
+                alt="logo"
+                width={50}
+                height={50}
+                className="rounded-full"
+              />
+            </Link>
+          </div>
+
+          {/* Navigation items (shown in the sliding menu) */}
+          <div className="navItems flex flex-col gap-4">
+            {navItems.map((navItem, idx) =>
+              !navItem.dropdown ? (
+                <Link href={navItem.link} key={idx} className="p-3 text-sm font-medium hover:text-primary hover:underline">
+                  {navItem.label}
+                </Link>
+              ) : (
+                // Wrap MenubarMenu in Menubar
+                <Menubar className = "border-none p-0" key={idx}>
+                  <MenubarMenu>
+                    <MenubarTrigger className = "cursor-pointer">{navItem.label}</MenubarTrigger>
+                    <MenubarContent className="flex flex-col gap-2 px-2">
+                      {navItem.children.map((child, idx) => (
+                        <Link href={child.link} key={idx}>
+                          <MenubarItem className="cursor-pointer hover:underline">
+                            {child.label}
+                          </MenubarItem>
+                        </Link>
+                      ))}
+                    </MenubarContent>
+                  </MenubarMenu>
+                </Menubar>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>
