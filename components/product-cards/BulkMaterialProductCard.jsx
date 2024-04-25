@@ -3,12 +3,11 @@ import ReactCardFlip from "react-card-flip";
 import { Button } from "@/components/ui/button";
 
 
-const ProductCard = ({
+const BulkMaterialProductCard = ({
   product: {
     imagePath = "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
     productName = "Premium PPC HDPE",
     price = "Rs10 / Bag",
-    bagTypes = ["HDPE", "Lamination"],
     quantity = 50,
   } = {},
 }) => {
@@ -25,7 +24,7 @@ const ProductCard = ({
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <div
-        className="border  inline-block shadow-sm w-[270px] h-[380px] cursor-pointer"
+        className="inline-block shadow-sm w-[270px] h-[380px] cursor-pointer"
         onClick={handleFlip}
       >
         <div className="bg-[#f5f5f5]">
@@ -49,7 +48,7 @@ const ProductCard = ({
           <div className="font-bold text-lg text-center ">{productName}</div>
         </div>
       </div>
-      <div className="border border-black inline-block shadow-sm w-[270px] h-[380px] justify-between relative">
+      <div className="border inline-block shadow-sm w-[270px] h-[380px] justify-between relative">
         <div
           className="mt-3 font-bold text-lg text-center pb-5 cursor-pointer"
           onClick={handleFlip}
@@ -57,14 +56,6 @@ const ProductCard = ({
           {productName}
         </div>
         <div className="fixed left-5 top-20">
-          <div className="flex justify-between mb-6">
-            <label className="text-md">Bag</label>
-            <select className="w-[10rem] border text-sm">
-              {bagTypes.map((bagType) => (
-                <option value={bagType}>{bagType}</option>
-              ))}
-            </select>
-          </div>
           <div className="flex  justify-between items-center mt-4">
             <div className="text-md">Quantity</div>
             <div className="font-light ml-3">
@@ -96,4 +87,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default BulkMaterialProductCard;

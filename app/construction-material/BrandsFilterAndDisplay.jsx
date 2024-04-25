@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import ProductCard from "./ProductCard";
+import CementProductCard from "../../components/product-cards/CementProductCard";
+import BulkMaterialProductCard from "@/components/product-cards/BulkMaterialProductCard";
+import BricksAndBlocksProductCard from "@/components/product-cards/BricksAndBlocksProductCard";
 
-
-function BrandsFilterAndDisplay() {
+function BrandsFilterAndDisplay({category}) {
   // Define lists of categories and brands
   const categories = [
     "PPC",
@@ -177,16 +178,25 @@ function BrandsFilterAndDisplay() {
         <div className="py-10 w-full flex justify-center sm:justify-start items-center flex-wrap gap-16">
           {/* Add your product cards or components here */}
           
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
+          
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "cement" && <CementProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
+          {category === "bulk-material" && <BulkMaterialProductCard/>}
+          {category === "bulk-material" && <BulkMaterialProductCard/>}
+          {category === "bulk-material" && <BulkMaterialProductCard/>}
+          {category === "bulk-material" && <BulkMaterialProductCard/>}
+ 
           
         </div>
       </div>

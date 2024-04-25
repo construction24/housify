@@ -11,6 +11,7 @@ import Image from "next/image";
 function CategoryLayout({imagePath}) {
 
     const pathName = usePathname();
+    const category = pathName.split("/").pop();
 
   return (
     <div className="container">
@@ -30,7 +31,7 @@ function CategoryLayout({imagePath}) {
         </div>
 
         <div className="brand-items-container mt-14">
-            <BrandsFilterAndDisplay/>
+            <BrandsFilterAndDisplay category = {category}/>
         </div>
     </div>
   );
