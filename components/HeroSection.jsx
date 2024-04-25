@@ -10,7 +10,7 @@ function HeroSection() {
     <div className="h-[90vh] overflow-hidden">
       <Navbar />
 
-      <div className="flex flex-col lg:flex-row justify-around items-center h-[90vh] sm:h-[90vh] p-20 pt-0">
+      <div className="flex flex-col lg:flex-row justify-around items-center h-[70vh] sm:h-[90vh] p-20 pt-0">
         <div className="flex flex-col gap-4 justify-center items-center text-center animate-slide-in-right">
           <h1 className="-mb-7">Find your place of dream</h1>
           <p>We are glad to have you around. Feel free to browse our website</p>

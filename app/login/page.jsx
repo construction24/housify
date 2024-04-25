@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Signin = () => {
-  const [verificationOption, setVerificationOption] = useState("phone");
+  const [verificationOption, setVerificationOption] = useState("email");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailError, setEmailError] = useState("");

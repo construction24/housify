@@ -23,6 +23,7 @@ function CategoryLayout({imagePath}) {
             height= {1200}
             alt="this is banner image"
             className= "w-[100%]"
+            priority = {true}
             ></Image>
         </div>
 

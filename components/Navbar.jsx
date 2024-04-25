@@ -42,7 +42,7 @@ function Navbar({ className = "" }) {
       ],
     },
     {
-      label: "Construction Material",
+      label: "Construction Material & items",
       dropdown: true,
       children: [
         { label: "Cement", link: "/construction-material/cement" },
@@ -60,7 +60,7 @@ function Navbar({ className = "" }) {
   ];
 
   return (
-    <div className={`container mt-6 mb-5 ${className}`}>
+    <div className={`container mt-6 mb-6 ${className}`}>
       {/* Navbar container */}
       <div className="navbar-container flex justify-between items-center">
         {/* Hamburger Menu Button */}
@@ -127,7 +127,7 @@ function Navbar({ className = "" }) {
         </div>
 
         {/* Right side of the navbar */}
-        <div className="flex gap-5 items-center lg:space-x-4">
+        <div className="flex gap-4  lg:gap-1 items-center lg:space-x-4">
           {/* Shopping cart icon */}
           <Link href="/">
             <ShoppingCart />
