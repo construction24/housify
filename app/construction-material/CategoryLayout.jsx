@@ -20,7 +20,7 @@ function CategoryLayout({imagePath}) {
             <Image
             src= {imagePath}
             width=  {1200}
-            height= {1200}
+            height= {200}
             alt="this is banner image"
             className= "w-[100%]"
             priority = {true}
