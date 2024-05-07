@@ -13,6 +13,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import CartSidebar from "@/components/cart/CartSidebar";
 
 function Navbar({ className = "" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,14 @@ function Navbar({ className = "" }) {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+
 
   const navItems = [
     { label: "Home", link: "/", dropdown: false },
@@ -48,11 +57,11 @@ function Navbar({ className = "" }) {
         { label: "Cement", link: "/construction-material/cement" },
         {
           label: "Bricks and blocks",
-          link: "/construction-material/bricks-and-blocks",
+          link: "/construction-material/bricks_and_blocks",
         },
         {
           label: "bulk material",
-          link: "/construction-material/bulk-material",
+          link: "/construction-material/bulk_material",
         },
       ],
     },
@@ -129,9 +138,7 @@ function Navbar({ className = "" }) {
         {/* Right side of the navbar */}
         <div className="flex gap-4  lg:gap-1 items-center lg:space-x-4">
           {/* Shopping cart icon */}
-          <Link href="/">
-            <ShoppingCart />
-          </Link>
+          <ShoppingCart onClick={toggleSidebar} className="cursor-pointer"/>
 
           {/* Theme toggle button */}
           <ModeToggle className="" />
@@ -141,6 +148,9 @@ function Navbar({ className = "" }) {
             <Button className="ml-2">Log in</Button>
           </Link>
         </div>
+        
+        {/* CartSidebar */}
+        {isSidebarOpen && <CartSidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />}
 
         {/* Sliding menu */}
         <div

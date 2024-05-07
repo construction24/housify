@@ -1,0 +1,42 @@
+const bricksAndBlocksData = {
+  brandImages: [
+    "/construction-material-pages/brandImages/cement/Best_Quality.webp",
+    "/construction-material-pages/brandImages/cement/Best_Cost.webp",
+  ],
+  categories: [
+    "AAC Block",
+    "Hollow Blocks",
+    "Interlocking Blocks",
+    "Porotherm Blocks",
+    "Cover Blocks",
+    "Kerb Stone",
+    "Paver Blocks",
+    "Chamber Bricks",
+    "Solid Blocks",
+    "Wirecut Bricks",
+    "Flyash Bricks",
+    "Box Bricks",
+    "BJM",
+    "Broken AAC Block",
+  ],
+  brands: [
+    "Aerocon",
+    "Best Cost",
+    "Best Quality",
+    "Cellokon",
+    "Fusion",
+    "Homesure",
+    "Kamcrete",
+    "Magna",
+    "Meghalite",
+    "Mepcrete",
+    "NCL",
+    "PRIME",
+    "Ramco",
+    "Renacon",
+    "Ultratech",
+    "Weber",
+  ],
+};
+
+export { bricksAndBlocksData };

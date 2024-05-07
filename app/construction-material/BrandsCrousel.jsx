@@ -8,23 +8,14 @@ import {
 
 import Image from "next/image";
 
-function BrandsCarousel({className = ""}) {
-  // Sample array of brand images
-  const brandImages = [
+function BrandsCarousel(
+  {className = "", 
+  brandImages = [
     "/construction-material-pages/brandImages/cement/Best_Quality.webp",
     "/construction-material-pages/brandImages/cement/Best_Cost.webp",
-    "/construction-material-pages/brandImages/cement/Asian.webp",
-    "/construction-material-pages/brandImages/cement/Best_Cost.webp",
-    "/construction-material-pages/brandImages/cement/Asian.webp",
-    "/construction-material-pages/brandImages/cement/Best_Cost.webp",
-    "/construction-material-pages/brandImages/cement/Best_Cost.webp",
-    // "brand3.jpg",
-    // "brand4.jpg",
-    // "brand5.jpg",
-    // "brand6.jpg",
-    // "brand7.jpg",
-    // "brand8.jpg",
-  ];
+  ]}
+) {
+
 
   // State for the carousel API
   const [carouselApi, setCarouselApi] = useState(null);

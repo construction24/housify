@@ -5,30 +5,16 @@ import CementProductCard from "../../components/product-cards/CementProductCard"
 import BulkMaterialProductCard from "@/components/product-cards/BulkMaterialProductCard";
 import BricksAndBlocksProductCard from "@/components/product-cards/BricksAndBlocksProductCard";
 
-function BrandsFilterAndDisplay({category}) {
-  // Define lists of categories and brands
-  const categories = [
-    "PPC",
-    "OPC",
-    "PSC",
-    "Composite",
-    "White Cement",
-    "Premium",
-    "Putty",
-    "Ready Mix Plaster",
-  ];
+function BrandsFilterAndDisplay({
+  category,
+  categories = [
 
-  const brands = [
-    "ACC",
-    "Anjan",
-    "Arasu",
-    "Asian",
+  ],
+  brands = [
     "Best Cost",
     "Best Quality",
-    "Bhavya",
-    "Birla Al",
-  ];
-
+  ],
+}) {
   // State variables for selected categories, selected brands, and filter menu visibility
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -130,7 +116,6 @@ function BrandsFilterAndDisplay({category}) {
 
       {/* Desktop filter section */}
       <div className="flex gap-10">
-
         {/* Sidebar filter */}
         <div className="filter-container hidden md:block basis-1/4">
           <h2 className="font-bold mb-3">Filter By</h2>
@@ -175,29 +160,25 @@ function BrandsFilterAndDisplay({category}) {
         </div>
 
         {/* Products Display Area */}
-        <div className="py-10 w-full flex justify-center sm:justify-start items-center flex-wrap gap-16">
+        <div className="py-10 w-full flex justify-center sm:justify-start items-start flex-wrap gap-16">
           {/* Add your product cards or components here */}
-          
-          
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "cement" && <CementProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard/>}
-          {category === "bulk-material" && <BulkMaterialProductCard/>}
-          {category === "bulk-material" && <BulkMaterialProductCard/>}
-          {category === "bulk-material" && <BulkMaterialProductCard/>}
-          {category === "bulk-material" && <BulkMaterialProductCard/>}
- 
-          
+
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "cement" && <CementProductCard />}
+          {category === "bricks_and_blocks" && <BricksAndBlocksProductCard />}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
+          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
+          {category === "bulk-material" && <BulkMaterialProductCard />}
+          {category === "bulk-material" && <BulkMaterialProductCard />}
+          {category === "bulk-material" && <BulkMaterialProductCard />}
+          {category === "bulk-material" && <BulkMaterialProductCard />}
         </div>
       </div>
     </div>
