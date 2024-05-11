@@ -11,7 +11,8 @@ function CategoryLayout({
   imagePath,
   brandImages,
   categories,
-  brands
+  brands,
+  products
 }) {
     
   const pathName = usePathname();
@@ -40,6 +41,7 @@ function CategoryLayout({
         category={category} 
         categories={categories}
         brands={brands}
+        products = {products}
         />
       </div>
     </div>

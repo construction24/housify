@@ -83,7 +83,7 @@ const BricksAndBlocksProductCard = ({
               >
                 +
               </Button>
-              Bags
+              Foot
             </div>
           </div>
         </div>

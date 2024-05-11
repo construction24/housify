@@ -10,6 +10,7 @@ function page() {
             brandImages={bulkMaterialData?.brandImages}
             categories={bulkMaterialData?.categories}
             brands={bulkMaterialData?.brands}
+            products={bulkMaterialData?.products}
         />
     </div>
   )

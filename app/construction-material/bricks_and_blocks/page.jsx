@@ -11,6 +11,7 @@ function page() {
             brandImages={bricksAndBlocksData?.brandImages}
             categories={bricksAndBlocksData?.categories}
             brands={bricksAndBlocksData?.brands}
+            products={bricksAndBlocksData?.products}
         />
     </div>
   )

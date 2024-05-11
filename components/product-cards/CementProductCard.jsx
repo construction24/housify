@@ -8,7 +8,6 @@ const CementProductCard = ({
     imagePath = "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
     productName = "Premium PPC HDPE",
     price = "Rs10 / Bag",
-    bagTypes = ["HDPE", "Lamination"],
     quantity = 50,
   } = {},
 }) => {
@@ -56,15 +55,8 @@ const CementProductCard = ({
         >
           {productName}
         </div>
-        <div className="fixed left-5 top-20">
-          <div className="flex justify-between mb-6">
-            <label className="text-md">Bag</label>
-            <select className="w-[10rem] border text-sm">
-              {bagTypes.map((bagType, index) => (
-                <option value={bagType} key = {index}>{bagType}</option>
-              ))}
-            </select>
-          </div>
+        <div className="fixed left-5 top-14">
+
           <div className="flex  justify-between items-center mt-4">
             <div className="text-md">Quantity</div>
             <div className="font-light ml-3">

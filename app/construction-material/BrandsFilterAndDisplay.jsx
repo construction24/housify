@@ -14,6 +14,8 @@ function BrandsFilterAndDisplay({
     "Best Cost",
     "Best Quality",
   ],
+
+  products = []
 }) {
   // State variables for selected categories, selected brands, and filter menu visibility
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -161,24 +163,18 @@ function BrandsFilterAndDisplay({
 
         {/* Products Display Area */}
         <div className="py-10 w-full flex justify-center sm:justify-start items-start flex-wrap gap-16">
+          
           {/* Add your product cards or components here */}
+          
+          {/* show the product cards when category is cement */}
+          {category === "cement" && products.map((product) => <CementProductCard/>)}
 
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "cement" && <CementProductCard />}
-          {category === "bricks_and_blocks" && <BricksAndBlocksProductCard />}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
-          {category === "bricks-and-blocks" && <BricksAndBlocksProductCard />}
-          {category === "bulk-material" && <BulkMaterialProductCard />}
-          {category === "bulk-material" && <BulkMaterialProductCard />}
-          {category === "bulk-material" && <BulkMaterialProductCard />}
-          {category === "bulk-material" && <BulkMaterialProductCard />}
+          {/* show the product cards when categrory is bricks and blocks */}
+          {category === "bricks_and_blocks" && products.map((product) => <BricksAndBlocksProductCard/>)}
+          
+          {/* show the product cards when categrory is bulk material */}
+          {category === "bulk_material" && products.map((product) => <BulkMaterialProductCard/>)}
+          
         </div>
       </div>
     </div>

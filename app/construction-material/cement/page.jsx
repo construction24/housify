@@ -14,6 +14,7 @@ export default function page() {
             brandImages = {cementData?.brandImages}   
             categories={cementData?.categories}
             brands={cementData?.brands}
+            products= {cementData?.products}
         />
     </div>
   )
