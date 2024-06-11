@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import { Button } from "@/components/ui/button";
+import {Input} from "@/components/ui/input"
 
 
 const CementProductCard = ({
@@ -37,7 +38,7 @@ const CementProductCard = ({
         <div className="py-5">
           <div className="flex justify-between items-center mb-4">
             <div className=" w-[70%] rounded-r-full p-1 text-center bg-primary text-primary-foreground">
-              {price}
+              Rs {price} / bag
             </div>
             <img
               src="\construction-material-pages\rotate.png"
@@ -57,9 +58,9 @@ const CementProductCard = ({
         </div>
         <div className="fixed left-5 top-14">
 
-          <div className="flex  justify-between items-center mt-4">
+          <div className="mt-4">
             <div className="text-md">Quantity</div>
-            <div className="font-light ml-3">
+            <div className="font-light mt-6">
               <Button
                 variant="secondary"
                 onClick={handleDecrement}
@@ -67,10 +68,18 @@ const CementProductCard = ({
               >
                 -
               </Button>
-              <span className="inline-block w-4">{currentQuantity}</span>
+              <span className="inline-block w-4">
+                  <Input
+                    type="number"
+                    className="w-16 input-no-spinner"
+                    value={currentQuantity}
+                    onChange={(e) => setCurrentQuantity(+e.target.value)}
+                  >
+                  </Input>
+              </span>
               <Button
                 variant="secondary"
-                className="w-5 mx-2"
+                className="w-5 ml-14 mr-4"
                 onClick={handleIncrement}
               >
                 +

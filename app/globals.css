@@ -83,7 +83,14 @@ body{
     }
   }
 
+  /* style define to remove the defualt incrememnt and decrement in input[type = "number"] */
+  .input-no-spinner::-webkit-inner-spin-button,
+  .input-no-spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;  
+  }
 
+  /* animation keyframe define */
   @keyframes slide-in-right {
     0% {
       transform: translateX(-100%);  

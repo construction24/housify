@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 
 const BricksAndBlocksProductCard = ({
@@ -8,8 +9,8 @@ const BricksAndBlocksProductCard = ({
     imagePath = "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
     productName = "Premium PPC HDPE",
     price = "Rs10 / Bag",
-    bagTypes = ["HDPE", "Lamination"],
-    quantity = 50,
+    // bagTypes = ["HDPE", "Lamination"],
+    quantity = 500,
   } = {},
 }) => {
   
@@ -20,7 +21,7 @@ const BricksAndBlocksProductCard = ({
 
   const handleIncrement = () => setCurrentQuantity((prev) => prev + 1);
   const handleDecrement = () =>
-    setCurrentQuantity((prev) => Math.max(prev - 1, 1));
+    setCurrentQuantity((prev) => Math.max(prev - 1, 500));
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
@@ -38,7 +39,7 @@ const BricksAndBlocksProductCard = ({
         <div className="py-5">
           <div className="flex justify-between items-center mb-4">
             <div className=" w-[70%] rounded-r-full p-1 text-center bg-primary text-primary-foreground">
-              {price}
+              Rs {price} / piece
             </div>
             <img
               src="\construction-material-pages\rotate.png"
@@ -57,33 +58,41 @@ const BricksAndBlocksProductCard = ({
           {productName}
         </div>
         <div className="fixed left-5 top-20">
-          <div className="flex justify-between mb-6">
+          {/* <div className="flex justify-between mb-6">
             <label className="text-md">Bag</label>
             <select className="w-[10rem] border text-sm">
               {bagTypes.map((bagType, index) => (
                 <option value={bagType} key = {index}>{bagType}</option>
               ))}
             </select>
-          </div>
-          <div className="flex  justify-between items-center mt-4">
+          </div> */}
+          <div className="mt-4">
             <div className="text-md">Quantity</div>
-            <div className="font-light ml-3">
+            <div className="font-light mt-5">
               <Button
                 variant="secondary"
                 onClick={handleDecrement}
-                className="w-5 mx-2"
+                className="w-5 mx-4"
               >
                 -
               </Button>
-              <span className="inline-block w-4">{currentQuantity}</span>
+              <span className="inline-block w-4">
+                  <Input
+                    type="number"
+                    className="w-16 input-no-spinner"
+                    value={currentQuantity}
+                    onChange={(e) => setCurrentQuantity(+e.target.value)}
+                  >
+                  </Input>
+              </span>
               <Button
                 variant="secondary"
-                className="w-5 mx-2"
+                className="w-5 ml-16 mr-4"
                 onClick={handleIncrement}
               >
                 +
               </Button>
-              Foot
+              Pieces
             </div>
           </div>
         </div>

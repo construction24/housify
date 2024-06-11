@@ -25,10 +25,33 @@ const bulkMaterialData = {
   ],
   products: [
     {
-      imagePath: "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
-      productName: "Premium PPC HDPE",
-      price : "Rs 100/Bag",
-    }
+      imagePath : "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
+      productName : "20MM Nile",
+      priceInFeet : 40,
+      priceInTonne : 940,
+      quantity : 50,
+    },
+    {
+      imagePath : "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
+      productName : "10MM Nile",
+      priceInFeet : 20,
+      priceInTonne : 30,
+      quantity : 50,
+    },
+    {
+      imagePath : "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
+      productName : "Premium PPC HDPE",
+      priceInFeet : 10,
+      priceInTonne : 20,
+      quantity : 50,
+    },
+    {
+      imagePath : "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
+      productName : "Premium PPC HDPE",
+      priceInFeet : 10,
+      priceInTonne : 20,
+      quantity : 50,
+    },
   ]
 };
 
