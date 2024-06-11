@@ -167,13 +167,13 @@ function BrandsFilterAndDisplay({
           {/* Add your product cards or components here */}
           
           {/* show the product cards when category is cement */}
-          {category === "cement" && products.map((product) => <CementProductCard product = {product}/>)}
+          {category === "cement" && products.map((product, index) => <CementProductCard product = {product} key = {index}/>)}
 
           {/* show the product cards when categrory is bricks and blocks */}
-          {category === "bricks_and_tiles" && products.map((product) => <BricksAndTilesProductCard product={product}/>)}
+          {category === "bricks_and_tiles" && products.map((product, index) => <BricksAndTilesProductCard product={product} key = {index}/>)}
           
           {/* show the product cards when categrory is bulk material */}
-          {category === "bulk_material" && products.map((product) => <BulkMaterialProductCard product={product}/>)}
+          {category === "bulk_material" && products.map((product, index) => <BulkMaterialProductCard product={product} key = {index}/>)}
           
         </div>
       </div>
