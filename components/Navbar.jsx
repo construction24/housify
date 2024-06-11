@@ -56,8 +56,8 @@ function Navbar({ className = "" }) {
       children: [
         { label: "Cement", link: "/construction-material/cement" },
         {
-          label: "Bricks and blocks",
-          link: "/construction-material/bricks_and_blocks",
+          label: "Bricks and Tiles",
+          link: "/construction-material/bricks_and_tiles",
         },
         {
           label: "bulk material",

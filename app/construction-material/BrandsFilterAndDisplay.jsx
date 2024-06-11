@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CementProductCard from "../../components/product-cards/CementProductCard";
 import BulkMaterialProductCard from "@/components/product-cards/BulkMaterialProductCard";
-import BricksAndBlocksProductCard from "@/components/product-cards/BricksAndBlocksProductCard";
+import BricksAndTilesProductCard from "@/components/product-cards/BricksAndTilesProductCard";
 
 function BrandsFilterAndDisplay({
   category,
@@ -170,7 +170,7 @@ function BrandsFilterAndDisplay({
           {category === "cement" && products.map((product) => <CementProductCard/>)}
 
           {/* show the product cards when categrory is bricks and blocks */}
-          {category === "bricks_and_blocks" && products.map((product) => <BricksAndBlocksProductCard/>)}
+          {category === "bricks_and_tiles" && products.map((product) => <BricksAndTilesProductCard/>)}
           
           {/* show the product cards when categrory is bulk material */}
           {category === "bulk_material" && products.map((product) => <BulkMaterialProductCard/>)}

@@ -1,4 +1,4 @@
-const bricksAndBlocksData = {
+const bricksAndTilesData = {
   brandImages: [
     "/construction-material-pages/brandImages/cement/Best_Quality.webp",
     "/construction-material-pages/brandImages/cement/Best_Cost.webp",
@@ -51,4 +51,4 @@ const bricksAndBlocksData = {
   ]
 };
 
-export { bricksAndBlocksData };
+export { bricksAndTilesData };
