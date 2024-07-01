@@ -42,6 +42,10 @@ const bricksAndTilesData = {
       imagePath: "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
       productName: "Premium PPC HDPE",
       price : 8,
+      description: "",
+      stock : 10,
+      subCategory: "",
+      brands : ""
     },
     {
       imagePath: "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
