@@ -2,6 +2,8 @@ import * as jwt from "jsonwebtoken";
 import { supabase } from "@/lib/utils";
 import { connectDB } from "../../../dbConfig/dbConfig";
 import otpModel from "../../../models/otp";
+import UserModel from "@/models/user";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
 
@@ -15,6 +17,7 @@ export async function POST(req) {
     const { otp } = await req.json();
 
     try{
+        console.log("writing before db Connect")
         await connectDB();
 
         const decoded = jwt.verify(token, process.env.JWT_KEY);
@@ -28,16 +31,21 @@ export async function POST(req) {
         
         // if(error || otp != decoded.otp || otp != data[0].otp) 
         //     return new Response(JSON.stringify({message : 'Otp not matched'}), { status: 403})
-
+        
         if (!otpRecord || otp !== decoded.otp || otp !== otpRecord.otp) {
             return new Response(JSON.stringify({ message: 'Otp not matched' }), { status: 403 });
         }
-
         const newToken = jwt.sign({ email: decoded?.email }, process.env.JWT_KEY, { expiresIn: '5h' });
-
         // await supabase.rpc('insert_into_user_table', {email: decoded?.email, token: newToken});
-
-        await User.updateOne(
+   
+        const user = await UserModel.findOne({email: decoded?.email});
+        if(!user){
+            return NextResponse.json({
+                msg: "No user found with this email in verifying the otp",
+                status: 404,
+            })
+        }
+        await UserModel.updateOne(
             { email: decoded?.email },
             { email: decoded?.email, token: newToken },
             { upsert: true }

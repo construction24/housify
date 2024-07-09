@@ -6,10 +6,14 @@ const otpSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
+    email: {
+      type: String,
+      required: true
     },
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "users",
+    // },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -19,6 +23,6 @@ const otpSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const otpModel = mongoose.model.otp || mongoose.model("otp", otpSchema);
+const otpModel = mongoose.models.otp || mongoose.model("otp", otpSchema);
 
 export default otpModel;

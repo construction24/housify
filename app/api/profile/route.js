@@ -1,16 +1,19 @@
 import { NextResponse } from "next/server";
-import userModel from "../../../models/user";
+import UserModel from "@/models/user";
+import { connectDB } from "@/dbConfig/dbConfig";
 
-export async function GET(req) {
+export async function POST(req) {
+     
     try {
+        await connectDB();
         const { email } = await req.json();
-
+        // console.log("email", email)
         if (!email) {
             return NextResponse.json({ msg: 'Please provide an email' }, { status: 400 });
         }
 
-        const user = await userModel.findOne({ email: email });
-
+        const user = await UserModel.findOne({ email: email });
+        // console.log("user", user);
         if (!user) {
             return NextResponse.json({ msg: 'Email not registered, Please Signup' }, { status: 404 });
         }
@@ -39,14 +42,14 @@ export async function DELETE(req) {
             return NextResponse.json({ msg: 'Please provide an email' }, { status: 400 });
         }
 
-        const user = await userModel.findOne({ email: email });
+        const user = await UserModel.findOne({ email: email });
 
         if (!user) {
             return NextResponse.json({ msg: 'Email not registered, Please Signup' }, { status: 404 });
         }
 
         // Delete the user
-        await userModel.deleteOne({ email: email });
+        await UserModel.deleteOne({ email: email });
 
         return NextResponse.json({ msg: 'User details successfully deleted' }, { status: 200 });
     } catch (error) {

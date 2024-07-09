@@ -14,10 +14,10 @@ const UserSchema = new mongoose.Schema({
   },
   fullname: {
     type: String,
-    required: true,
+    // required: true,
   },
   otp: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: "otp",
   },
   address: {
