@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+// const MONGODB_URI = process.env.MONGODB_URI;
+import { MONGODB_URI } from "./config";
 
 if (!MONGODB_URI) {
   throw new Error(

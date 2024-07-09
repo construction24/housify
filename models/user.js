@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
@@ -25,15 +21,17 @@ const UserSchema = new mongoose.Schema({
     ref: "otp",
   },
   address: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'address',
+    default: null,
   },
-  token: {
+  refreshToken: {
     type: String,
-    default: null
+    default: "", // Default to empty string for JWT token
   }
 });
 
-const userModel = mongoose.model.users || mongoose.model("users", UserSchema);
+// Use `mongoose.models` to check if the model already exists
+const UserModel = mongoose.models.users || mongoose.model("users", UserSchema);
 
-export default userModel;
+export default UserModel;

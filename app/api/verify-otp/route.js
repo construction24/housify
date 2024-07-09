@@ -1,8 +1,7 @@
-
 import * as jwt from "jsonwebtoken";
 import { supabase } from "@/lib/utils";
-import dbconnect from "../../../lib/dbConnect";
-
+import { connectDB } from "../../../dbConfig/dbConfig";
+import otpModel from "../../../models/otp";
 
 export async function POST(req) {
 
@@ -16,7 +15,7 @@ export async function POST(req) {
     const { otp } = await req.json();
 
     try{
-        await dbconnect();
+        await connectDB();
 
         const decoded = jwt.verify(token, process.env.JWT_KEY);
         
@@ -25,7 +24,7 @@ export async function POST(req) {
 
         // const {data, error} = await supabase.from('otp').select('*').eq('email', decoded?.email)
 
-        const otpRecord = await Otp.findOne({ email: decoded?.email });
+        const otpRecord = await otpModel.findOne({ email: decoded?.email });
         
         // if(error || otp != decoded.otp || otp != data[0].otp) 
         //     return new Response(JSON.stringify({message : 'Otp not matched'}), { status: 403})

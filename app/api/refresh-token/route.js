@@ -1,23 +1,41 @@
-// import * as jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
+import userModel from "../../../models/user";
+import { NextResponse } from "next/server";
+import { connectDB } from "../../../dbConfig/dbConfig";
 
-// export async function POST(req) {
-//   try {
-//     const refreshToken = jwt.sign(user, process.env.JWT_KEY, {
-//       expiresIn: "1h",
-//     });
-//     const { token } = req.body;
+export async function POST(req) {
+  try {
+    await connectDB();
+    const { email } = await req.json();
 
-//     if (!token) return res.sendStatus(401);
-//     if (!refreshTokens.includes(token)) return res.sendStatus(403);
+    if (!email) {
+      return NextResponse.json(
+        { msg: "Please provide an email" },
+        { status: 400 }
+      );
+    }
 
-//     jwt.verify(token, REFRESH_SECRET_KEY, (err, user) => {
-//       if (err) return res.sendStatus(403);
+    const user = await userModel.findOne({ email: email });
 
-//       const refreshToken = generateAccessToken({ username: user.username });
-//       res.json({ token: refreshToken });
-//     });
-//   } catch (error) {
-//     console.error("Error sending OTP:", error.message);
-//     return NextResponse.json({ error: error.message }, { status: 500 });
-//   }
-// }
+    if (!user) {
+      return NextResponse.json(
+        { msg: "Email not registered, Please Signup" },
+        { status: 404 }
+      );
+    }
+
+    const refreshToken = jwt.sign({ email: user.email, id: user._id }, process.env.JWT_KEY, {
+      expiresIn: "24h",
+    });
+
+    user.refreshToken = refreshToken;
+    await user.save();
+     
+    return NextResponse.json({
+        refreshToken: refreshToken,
+    }, { status: 201 });
+  } catch (error) {
+    console.error("Error generating token:", error.message);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

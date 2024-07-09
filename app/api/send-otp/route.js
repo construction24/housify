@@ -5,9 +5,12 @@ import * as jwt from "jsonwebtoken";
 import { NextResponse } from 'next/server';
 import otpModel from "../../../models/otp";
 import userModel from "../../../models/user";
+import { connectDB } from "../../../dbConfig/dbConfig";
 
 export async function POST(req) {
     try {
+        await connectDB();
+        
         const { email } = await req.json();
 
         if (!email) {
