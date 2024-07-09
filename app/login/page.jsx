@@ -4,9 +4,12 @@ import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { OneTimePassword } from "./OneTimePassword";
+import axiosInstance from "@/lib/axiosInstance";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useToast } from "@/components/ui/use-toast"
+
 
 const Signin = () => {
   const [verificationOption, setVerificationOption] = useState("email");
@@ -15,6 +18,9 @@ const Signin = () => {
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [verificationSent, setVerificationSent] = useState(false); // Track if verification code has been sent
+  const [loading, setLoading] = useState(false);
+
+  const {toast} = useToast();
 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
@@ -49,8 +55,10 @@ const Signin = () => {
     return true;
   };
 
-  const handleSendVerificationCode = (e) => {
-    e.preventDefault(); // Prevent default form submission
+  const handleSendVerificationCode = async (e) => {
+    e.preventDefault(); 
+
+   
 
     let isValid = true;
     if (verificationOption === "phone") {
@@ -60,6 +68,8 @@ const Signin = () => {
     }
 
     if (isValid) {
+
+      setLoading(true);
       // logic to send verification code based on the selected option
       if (verificationOption === "phone") {
         console.log("Sending verification code to", phoneNumber);
@@ -67,7 +77,25 @@ const Signin = () => {
         console.log("Sending verification code to", email);
       }
       
-      setVerificationSent(true); // Set verification sent to true
+      try {
+        const response = await axiosInstance.post('/api/send-otp', { email });
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+
+        toast({
+          description: "Your otp has been sent successfully.",
+        })
+
+        setVerificationSent(true); // Set verification sent to true
+        setLoading(false);
+
+      }catch(error){
+        console.log(error);
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        })
+      }
     }
   };
 
@@ -138,7 +166,7 @@ const Signin = () => {
                 )}
 
                   <div className="m-7">
-                    <Button type="submit">Send Verification Code</Button>
+                    <Button type="submit" disabled = {loading}>{loading ? "Sending verification code ..." : "Send Verification Code"}</Button>
                   </div>
                 </form>
               )}

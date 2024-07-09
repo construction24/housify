@@ -18,14 +18,13 @@ export async function POST(req) {
     
         const decoded = jwt.verify(token, process.env.JWT_KEY);
         
-        console.log(decoded)
+        console.log("decoded token", decoded)
     
 
         const {data, error} = await supabase.from('otp').select('*').eq('email', decoded?.email)
         
         if(error || otp != decoded.otp || otp != data[0].otp) 
             return new Response(JSON.stringify({message : 'Otp not matched'}), { status: 403})
-        console.log(data[0].otp);
 
         const newToken = jwt.sign({ email: decoded?.email }, process.env.JWT_KEY, { expiresIn: '5h' });
 
@@ -35,6 +34,7 @@ export async function POST(req) {
 
     }
     catch(error) {
+
         return new Response(JSON.stringify({ message: "token expired" }), {status: 401});
     }
 
