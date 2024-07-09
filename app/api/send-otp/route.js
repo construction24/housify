@@ -3,6 +3,8 @@ import { generateOTP } from "@/lib/utils";
 import { sendOtpToUser } from "@/lib/mailer";
 import * as jwt from "jsonwebtoken";
 import { NextResponse } from 'next/server';
+import otpModel from "../../../models/otp";
+import userModel from "../../../models/user";
 
 export async function POST(req) {
     try {
@@ -15,7 +17,15 @@ export async function POST(req) {
         const otp = generateOTP();
         const token = jwt.sign({ email, otp }, process.env.JWT_KEY, { expiresIn: '1h' });
 
-        await supabase.rpc('insert_into_otp_table', { email, otp });
+        const user = await userModel.findOne({email: email});
+
+        if (!user) {
+          return NextResponse.json({ msg: 'Email not registered, Please Signup' }, { status: 404 });
+      }
+        const otpRecord = new otpModel({ user, otp });
+        await otpRecord.save();
+
+        // await supabase.rpc('insert_into_otp_table', { email, otp });
 
         try {
             await sendOtpToUser(email, otp);
