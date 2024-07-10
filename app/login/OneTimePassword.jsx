@@ -21,7 +21,7 @@ export function OneTimePassword({methodOfLogin, userDetail}) {
   const onComplete = async () => {
     try {
       console.log(value);
-      const response = await axiosInstance.post('/api/verify-otp', { otp: value });
+      const response = await axiosInstance.post('/verify-otp', { otp: value });
       const { token } = response.data;
       localStorage.setItem('token', token);
       console.log("otp verified successfully");

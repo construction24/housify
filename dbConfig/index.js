@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { DB_NAME } from "@/constants";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -32,7 +33,7 @@ export async function connectDB() {
       };
 
       // Connect to MongoDB using Mongoose
-      cached.promise = mongoose.connect(MONGODB_URI, opts);
+      cached.promise = mongoose.connect(`${MONGODB_URI}/${DB_NAME}`, opts);
 
       // Event listener for successful connection
       mongoose.connection.once("connected", () => {
