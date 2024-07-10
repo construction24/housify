@@ -78,7 +78,7 @@ const Signin = () => {
       }
       
       try {
-        const response = await axiosInstance.post('/api/send-otp', { email });
+        const response = await axiosInstance.post('/send-otp', { email });
         const { token } = response.data;
         localStorage.setItem('token', token);
 
@@ -90,6 +90,7 @@ const Signin = () => {
         setLoading(false);
 
       }catch(error){
+        setLoading(false);
         console.log(error);
         toast({
           title: "Uh oh! Something went wrong.",
