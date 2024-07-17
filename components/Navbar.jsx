@@ -14,7 +14,14 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import CartSidebar from "@/components/cart/CartSidebar";
+import Cookies from "js-cookie";
 
+const getLanguageCookie = () => {
+  return Cookies.get("Token");
+};
+
+const Token = getLanguageCookie();
+console.log(Token)
 function Navbar({ className = "" }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -144,9 +151,14 @@ function Navbar({ className = "" }) {
           <ModeToggle className="" />
 
           {/* Login button */}
-          <Link href="/login">
-            <Button className="ml-2">Log in</Button>
-          </Link>
+          {Token === undefined && 
+           <Link href="/login">
+           <Button className="ml-2">Log in</Button>
+         </Link>}
+         {Token !== undefined && 
+          <Link href="/logout">
+          <Button className="ml-2">Log out</Button>
+          </Link>}
         </div>
         
         {/* CartSidebar */}

@@ -32,7 +32,7 @@ export async function POST(req) {
     try {
       await sendOtpToUser(email, otp);
       console.log("OTP sent to user successfully.");
-
+      
       return NextResponse.json({ token }, { status: 200 });
     } catch (error) {
       console.error("Error sending OTP:", error.message);
