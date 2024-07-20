@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import CategoryLayout from '../CategoryLayout'
 import { bulkMaterialData } from '@/data/bulk_material/bulk_material'
