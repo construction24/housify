@@ -4,12 +4,12 @@ import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { OneTimePassword } from "./OneTimePassword";
-import axiosInstance from "@/lib/axiosInstance";
+import api from "@/lib/axiosInstance";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast"
-
+import { WithoutAuth } from "@/lib/routeProtection";
 
 const Signin = () => {
   const [verificationOption, setVerificationOption] = useState("email");
@@ -78,9 +78,9 @@ const Signin = () => {
       }
       
       try {
-        const response = await axiosInstance.post('/send-otp', { email });
-        const { token } = response.data;
-        localStorage.setItem('token', token);
+        const response = await api.post('/send-otp', { email });
+        const { otpToken } = response.data;
+        localStorage.setItem('otpToken', otpToken);
 
         toast({
           description: "Your otp has been sent successfully.",
@@ -205,4 +205,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default WithoutAuth(Signin);
