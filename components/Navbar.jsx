@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
@@ -14,21 +14,24 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import CartSidebar from "@/components/cart/CartSidebar";
+import useAuth from "@/hooks/useAuth";
 
 function Navbar({ className = "" }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { isUserPresent, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
-
 
   const navItems = [
     { label: "Home", link: "/", dropdown: false },
@@ -115,7 +118,7 @@ function Navbar({ className = "" }) {
                 {navItem.label}
               </Link>
             ) : (
-              <Menubar className = "border-none" key={idx}>
+              <Menubar className="border-none" key={idx}>
                 <MenubarMenu>
                   <MenubarTrigger className="px-4 py-2 cursor-pointer">
                     {navItem.label}
@@ -138,19 +141,26 @@ function Navbar({ className = "" }) {
         {/* Right side of the navbar */}
         <div className="flex gap-4  lg:gap-1 items-center lg:space-x-4">
           {/* Shopping cart icon */}
-          <ShoppingCart onClick={toggleSidebar} className="cursor-pointer"/>
+          <ShoppingCart onClick={toggleSidebar} className="cursor-pointer" />
 
           {/* Theme toggle button */}
           <ModeToggle className="" />
 
-          {/* Login button */}
-          <Link href="/login">
-            <Button className="ml-2">Log in</Button>
-          </Link>
+          {!isUserPresent ? (
+            <Link href="/login">
+              <Button className="ml-2">Log in</Button>
+            </Link>
+          ) : (
+            <div onClick={handleLogout}>
+              <Button className="ml-2">Logout</Button>
+            </div>
+          )}
         </div>
-        
+
         {/* CartSidebar */}
-        {isSidebarOpen && <CartSidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />}
+        {isSidebarOpen && (
+          <CartSidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
+        )}
 
         {/* Sliding menu */}
         <div
@@ -184,14 +194,20 @@ function Navbar({ className = "" }) {
           <div className="navItems flex flex-col gap-4">
             {navItems.map((navItem, idx) =>
               !navItem.dropdown ? (
-                <Link href={navItem.link} key={idx} className="p-3 text-sm font-medium hover:text-primary hover:underline">
+                <Link
+                  href={navItem.link}
+                  key={idx}
+                  className="p-3 text-sm font-medium hover:text-primary hover:underline"
+                >
                   {navItem.label}
                 </Link>
               ) : (
                 // Wrap MenubarMenu in Menubar
-                <Menubar className = "border-none p-0" key={idx}>
+                <Menubar className="border-none p-0" key={idx}>
                   <MenubarMenu>
-                    <MenubarTrigger className = "cursor-pointer">{navItem.label}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-pointer">
+                      {navItem.label}
+                    </MenubarTrigger>
                     <MenubarContent className="flex flex-col gap-2 px-2">
                       {navItem.children.map((child, idx) => (
                         <Link href={child.link} key={idx}>

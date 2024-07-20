@@ -2,6 +2,8 @@ import * as jwt from "jsonwebtoken";
 import { connectDB } from "@/dbConfig";
 import User from "@/models/user.model";
 import { NextResponse } from "next/server";
+import { cookies } from 'next/headers'
+import { idTokenExpiry } from "@/constants";
 
 export async function POST(req) {
   try {
@@ -49,10 +51,23 @@ export async function POST(req) {
 
     // Generate new JWT token with updated expiry
     console.log("Generating new JWT token...");
-    const newToken = jwt.sign({ email: decoded.email }, process.env.JWT_KEY, { expiresIn: '5h' });
-    console.log("New JWT token generated:", newToken);
+    const newToken = jwt.sign({ email: decoded.email, id: user._id }, process.env.JWT_KEY, { expiresIn: idTokenExpiry });
+    console.log("New JWT token generated:", newToken); 
 
+
+    // Set the JWT token in a cookie
+    cookies().set('idToken', newToken,  {
+      httpOnly: true, // Prevents JavaScript access
+      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+      sameSite: 'Strict', // Helps prevent CSRF
+      maxAge: idTokenExpiry, // Cookie expiry in seconds
+      path: '/', // Cookie available throughout the entire site
+    })
+
+    console.log("JWT token saved in cookie.");  
+    // Return JSON response with the token
     return NextResponse.json({ token: newToken }, { status: 201 });
+
   } catch (error) {
     console.error("Error:", error.message);
 

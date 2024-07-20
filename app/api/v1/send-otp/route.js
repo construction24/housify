@@ -24,17 +24,21 @@ export async function POST(req) {
     const otp = generateOTP();
     console.log("Generated OTP:", otp);
 
-    const token = jwt.sign({ email, otp }, process.env.JWT_KEY, {
+    const otpToken = jwt.sign({ email, otp }, process.env.JWT_KEY, {
       expiresIn: "10m",
     });
+
     console.log("Generated JWT token.");
 
     try {
+
       await sendOtpToUser(email, otp);
       console.log("OTP sent to user successfully.");
+      
+      return NextResponse.json({ otpToken }, { status: 200 });
 
-      return NextResponse.json({ token }, { status: 200 });
     } catch (error) {
+
       console.error("Error sending OTP:", error.message);
       return NextResponse.json(
         { error: "Failed to send OTP. Please try again later." },

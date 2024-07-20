@@ -7,7 +7,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-import axiosInstance from "@/lib/axiosInstance";
+import api from "@/lib/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 
 import { useState } from "react";
@@ -20,10 +20,18 @@ export function OneTimePassword({methodOfLogin, userDetail}) {
 
   const onComplete = async () => {
     try {
-      console.log(value);
-      const response = await axiosInstance.post('/verify-otp', { otp: value });
-      const { token } = response.data;
-      localStorage.setItem('token', token);
+      const response = await api.post(
+        "/verify-otp", 
+        {
+          otp: value
+        },
+        {
+          headers: {
+            'authorization': `Bearer ${localStorage.getItem('otpToken')}`
+          }
+        }
+      );
+      localStorage.removeItem('otpToken');
       console.log("otp verified successfully");
       toast({
         description: "OTP verified successfully",
@@ -32,6 +40,7 @@ export function OneTimePassword({methodOfLogin, userDetail}) {
       console.log(response);
       router.push("/");
     } catch (error) {
+      console.log(error);
       toast({
           title: "OTP Verification Failed",
           description: "The entered OTP does not match. Please try again."
