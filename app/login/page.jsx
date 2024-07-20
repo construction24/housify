@@ -9,7 +9,7 @@ import api from "@/lib/axiosInstance";
 import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast"
-import { WithoutAuth } from "@/lib/routeProtection";
+import WithoutAuth from "@/components/WithoutAuth";
 
 const Signin = () => {
   const [verificationOption, setVerificationOption] = useState("email");
