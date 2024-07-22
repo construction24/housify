@@ -22,7 +22,10 @@ const cementData = {
     {
       imagePath: "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
       productName: "Premium PPC HDPE",
-      price : 100,
+      pricePerBag : 100,
+      description: "",
+      subCategory: "",
+      brand : ""
     }
   ]
 };

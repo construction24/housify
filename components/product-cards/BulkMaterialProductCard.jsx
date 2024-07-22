@@ -8,8 +8,8 @@ const BulkMaterialProductCard = ({
   product: {
     imagePath = "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
     productName = "Premium PPC HDPE",
-    priceInFeet = "Rs 10 / feet",
-    priceInTonne = "Rs 20 / tonne",
+    priceInFeet = "10",
+    priceInTonne = "20",
     quantity = 50,
     rateTypes = ["rate in feet", "rate in tonnes"]
   } = {},

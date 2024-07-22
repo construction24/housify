@@ -8,7 +8,7 @@ const CementProductCard = ({
   product: {
     imagePath = "https://images.l1supply.com/products/Cement/PPC/PC2C01AAZ1000.webp",
     productName = "Premium PPC HDPE",
-    price = "Rs10 / Bag",
+    pricePerBag = "10",
     quantity = 50,
   } = {},
 }) => {
@@ -38,7 +38,7 @@ const CementProductCard = ({
         <div className="py-5">
           <div className="flex justify-between items-center mb-4">
             <div className=" w-[70%] rounded-r-full p-1 text-center bg-primary text-primary-foreground">
-              Rs {price} / bag
+              Rs {pricePerBag} / bag
             </div>
             <img
               src="\construction-material-pages\rotate.png"
