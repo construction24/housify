@@ -3,7 +3,7 @@ const bricksAndTilesData = {
     "/construction-material-pages/brandImages/cement/Best_Quality.webp",
     "/construction-material-pages/brandImages/cement/Best_Cost.webp",
   ],
-  categories: [
+  subCategories: [
     "AAC Block",
     "Hollow Blocks",
     "Interlocking Blocks",
@@ -43,8 +43,8 @@ const bricksAndTilesData = {
       productName: "Premium PPC HDPE",
       pricePerPiece : 8,
       description: "",
-      subCategory: "",
-      brand : ""
+      subCategory: "AAC Block",
+      brand : "Best Cost"
     },
     
   ]

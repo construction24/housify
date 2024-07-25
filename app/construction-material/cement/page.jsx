@@ -12,7 +12,7 @@ export default function page() {
         <CategoryLayout
             imagePath = "/construction-material-pages/category_banner_Cement.png" 
             brandImages = {cementData?.brandImages}   
-            categories={cementData?.categories}
+            categories={cementData?.subCategories}
             brands={cementData?.brands}
             products= {cementData?.products}
         />

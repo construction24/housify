@@ -4,7 +4,7 @@ const cementData = {
     "/construction-material-pages/brandImages/cement/Best_Cost.webp",
     "/construction-material-pages/brandImages/cement/Asian.webp",
   ],
-  categories: [
+  subCategories: [
     "PPC",
     "OPC"
   ],
@@ -24,8 +24,8 @@ const cementData = {
       productName: "Premium PPC HDPE",
       pricePerBag : 100,
       description: "",
-      subCategory: "",
-      brand : ""
+      subCategory: "PPC",
+      brand : "ACC"
     }
   ]
 };

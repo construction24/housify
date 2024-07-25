@@ -11,7 +11,7 @@ function page() {
         <CategoryLayout
             imagePath = "/construction-material-pages/category_banner_Bricks-and-Blocks.webp"
             brandImages={bricksAndTilesData?.brandImages}
-            categories={bricksAndTilesData?.categories}
+            categories={bricksAndTilesData?.subCategories}
             brands={bricksAndTilesData?.brands}
             products={bricksAndTilesData?.products}
         />

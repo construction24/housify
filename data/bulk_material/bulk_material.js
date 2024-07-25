@@ -3,7 +3,7 @@ const bulkMaterialData = {
     "/construction-material-pages/brandImages/cement/Best_Quality.webp",
     "/construction-material-pages/brandImages/cement/Best_Cost.webp",
   ],
-  categories: [
+  subCategories: [
     "Aggregate (Cft)",
     "M-Sand (Cft)",
     "Filling Earth (Cft)",
@@ -30,8 +30,8 @@ const bulkMaterialData = {
       priceInFeet : 40,
       priceInTonne : 940,
       description : "",
-      subCategory: "",
-      brand: ""
+      subCategory: "Aggregate (Cft)",
+      brand: "Best Cost"
     },
   ]
 };

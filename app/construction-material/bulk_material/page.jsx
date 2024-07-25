@@ -10,7 +10,7 @@ function page() {
         <CategoryLayout
             imagePath = "/construction-material-pages/category_banner_Bulk Material.png"
             brandImages={bulkMaterialData?.brandImages}
-            categories={bulkMaterialData?.categories}
+            categories={bulkMaterialData?.subCategories}
             brands={bulkMaterialData?.brands}
             products={bulkMaterialData?.products}
         />
