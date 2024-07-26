@@ -5,7 +5,7 @@ import CategoryLayout from '../CategoryLayout';
 import api from '@/lib/axiosInstance';
 import Loader from '@/components/Loader';
 
-export default function page() {
+function Page() {
 
   const [data, setData] = useState(null);
 
@@ -32,4 +32,6 @@ export default function page() {
     </div>
   )
 }
+
+export default Page;
 

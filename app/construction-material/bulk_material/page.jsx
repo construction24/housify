@@ -5,7 +5,7 @@ import CategoryLayout from '../CategoryLayout'
 import api from '@/lib/axiosInstance';
 import Loader from '@/components/Loader';
 
-function page() {
+function Page() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -32,4 +32,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
