@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import CementProductCard from "../../components/product-cards/CementProductCard";
 import BulkMaterialProductCard from "@/components/product-cards/BulkMaterialProductCard";
@@ -17,10 +17,12 @@ function BrandsFilterAndDisplay({
 
   products = []
 }) {
+
   // State variables for selected categories, selected brands, and filter menu visibility
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedProducts , setSelectedProducts] = useState(products);
 
   // Handle category change
   const handleCategoryChange = (event) => {
@@ -47,10 +49,23 @@ function BrandsFilterAndDisplay({
     setIsFilterOpen((prevIsFilterOpen) => !prevIsFilterOpen);
   };
 
+  // filter on selected Categories
+  useEffect(()=>{
+    if (selectedBrands.length === 0 && selectedCategories.length === 0){
+      setSelectedProducts(products)
+    }else{
+      const filteredProducts = products.filter((product)=>{
+        return selectedCategories.includes(product?.subCategory) || selectedBrands.includes(product?.brand)
+      })
+      setSelectedProducts(filteredProducts)
+    }
+
+  },[selectedCategories, selectedBrands])
+
   return (
     <div className="flex flex-col">
       {/* Display selected filters */}
-      {(selectedCategories.length > 0 || selectedBrands.length > 0) && (
+      {/* {(selectedCategories.length > 0 || selectedBrands.length > 0) && (
         <div className="mb-8 pl-4 mt-10">
           <div>Showing results for:</div>
           {selectedCategories.length > 0 && (
@@ -66,7 +81,7 @@ function BrandsFilterAndDisplay({
             </div>
           )}
         </div>
-      )}
+      )} */}
 
       {/* Filter menu toggle button for mobile */}
       <Button className="mb-4 md:hidden" onClick={toggleFilterMenu}>
@@ -167,13 +182,13 @@ function BrandsFilterAndDisplay({
           {/* Add your product cards or components here */}
           
           {/* show the product cards when category is cement */}
-          {category === "cement" && products.map((product, index) => <CementProductCard product = {product} key = {index}/>)}
+          {category === "cement" && selectedProducts.map((product, index) => <CementProductCard product = {product} key = {index}/>)}
 
           {/* show the product cards when categrory is bricks and blocks */}
-          {category === "bricks_and_tiles" && products.map((product, index) => <BricksAndTilesProductCard product={product} key = {index}/>)}
+          {category === "bricks_and_tiles" && selectedProducts.map((product, index) => <BricksAndTilesProductCard product={product} key = {index}/>)}
           
           {/* show the product cards when categrory is bulk material */}
-          {category === "bulk_material" && products.map((product, index) => <BulkMaterialProductCard product={product} key = {index}/>)}
+          {category === "bulk_material" && selectedProducts.map((product, index) => <BulkMaterialProductCard product={product} key = {index}/>)}
           
         </div>
       </div>

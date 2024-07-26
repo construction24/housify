@@ -58,8 +58,6 @@ const Signin = () => {
   const handleSendVerificationCode = async (e) => {
     e.preventDefault(); 
 
-   
-
     let isValid = true;
     if (verificationOption === "phone") {
       isValid = validatePhoneNumber();
@@ -119,13 +117,13 @@ const Signin = () => {
 
   return (
     <section>
-      <div className="container mx-auto h-[100vh]">
+      <div className="container mx-auto h-[85vh]">
         <div className="-mx-4 flex flex-wrap h-full justify-center items-center">
           <div className="w-full px-4">
 
             {/* login box start */}
 
-            <div className="border border-border shadow-lg animate-slide-in-right relative mx-auto max-w-[525px] overflow-hidden rounded-lg px-10 py-16 text-center sm:px-12 md:px-[60px]">
+            <div className="border border-border shadow-md animate-slide-in-right relative mx-auto max-w-[525px] overflow-hidden rounded-lg px-10 py-16 text-center sm:px-12 md:px-[60px]">
               {!verificationSent && <h2>Welcome to Keshav Builders</h2>}
               {!verificationSent && <Link href="/"><Image src="/logo.ico" width={80} height={80} className="m-auto mb-5 mt-5 rounded-full" alt = "logo"/></Link>}
               {!verificationSent && (

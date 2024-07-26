@@ -7,10 +7,10 @@ const ProductSchema = new mongoose.Schema(
     productName: { type: String, required: true },
     pricePerPiece: {
       type: Number,
-      // Use this field only for "bricks_and_blocks" 
+      // Use this field only for "bricks_and_tiles" 
       required: function () {
         return (
-          this.category === "bricks_and_blocks"
+          this.category === "bricks_and_tiles"
         );
       },
     },
@@ -41,7 +41,7 @@ const ProductSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["cement", "bricks_and_blocks", "bulk_material"],
+      enum: ["cement", "bricks_and_tiles", "bulk_material"],
     },
   },
   {

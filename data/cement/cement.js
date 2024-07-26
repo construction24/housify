@@ -26,7 +26,7 @@ const cementData = {
       description: "",
       subCategory: "PPC",
       brand : "ACC"
-    }
+    },
   ]
 };
 

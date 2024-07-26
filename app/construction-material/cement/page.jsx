@@ -1,20 +1,33 @@
 "use client";
 
-import React from 'react'
+import React, {useEffect , useState} from 'react'
 import CategoryLayout from '../CategoryLayout';
-
-import {cementData} from "@/data/cement/cement.js"
+import api from '@/lib/axiosInstance';
+import Loader from '@/components/Loader';
 
 export default function page() {
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await api.get(`/category/cement`);
+      setData(res.data);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) return <Loader/>;
   
   return (
     <div>
         <CategoryLayout
             imagePath = "/construction-material-pages/category_banner_Cement.png" 
-            brandImages = {cementData?.brandImages}   
-            categories={cementData?.subCategories}
-            brands={cementData?.brands}
-            products= {cementData?.products}
+            brandImages = {data?.brandImages}   
+            categories={data?.categories}
+            brands={data?.brands}
+            products= {data?.products}
         />
     </div>
   )

@@ -1,25 +1,33 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
+import Loader from "@/components/Loader"; 
 
-// Higher-order component to protect routes for authenticated users
 const WithAuth = (WrappedComponent) => {
   const WithAuthComponent = (props) => {
     const { isUserPresent } = useAuth();
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
-      if (!isUserPresent) {
-        router.push("/login"); // Redirect to login if not authenticated
+      // Check authentication status and set loading to false
+      if (isUserPresent !== null) {
+        setLoading(false);
+        if (!isUserPresent) {
+          router.push("/login"); // Redirect to login if not authenticated
+        }
       }
     }, [isUserPresent, router]);
+
+    if (loading) {
+      return <Loader />;
+    }
 
     return isUserPresent ? <WrappedComponent {...props} /> : null;
   };
 
-  // Set display name for debugging purposes
   WithAuthComponent.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
   return WithAuthComponent;
