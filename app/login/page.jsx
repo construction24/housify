@@ -84,7 +84,7 @@ const Signin = () => {
           description: "Your otp has been sent successfully.",
         })
 
-        setVerificationSent(true); // Set verification sent to true
+        setVerificationSent(true); 
         setLoading(false);
 
       }catch(error){
