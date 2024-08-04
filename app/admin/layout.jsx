@@ -52,7 +52,7 @@ function Layout({ children }) {
   const pathname = usePathname()
 
   const isPathActive = (href) => {
-    return pathname === href;
+    return href === pathname || href != "/admin" && pathname.startsWith(href);
   }
 
   return (
