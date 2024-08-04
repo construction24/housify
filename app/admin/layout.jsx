@@ -124,7 +124,7 @@ function Layout({ children }) {
               </nav>
             </SheetContent>
           </Sheet>
-          <div className="w-full flex-1 ">
+          <div className="w-full flex-1">
             <form>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -157,7 +157,7 @@ function Layout({ children }) {
           <div className="hidden md:block">
             <BreadcrumbContainer/>
           </div>
-          {children}
+            {children}
         </main>
       </div>
     </div>
