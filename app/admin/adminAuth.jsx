@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import axios from 'axios';
 import { useToast } from '@/components/ui/use-toast';
 
-export default function AdminAuth() {
+export default function page() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '' });

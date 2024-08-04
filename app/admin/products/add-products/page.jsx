@@ -1,10 +1,9 @@
-"use client";
 import React from 'react'
 
 function page() {
   return (
     <div>
-      under construction
+        add products
     </div>
   )
 }

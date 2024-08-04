@@ -1,4 +1,3 @@
-import { Slash } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,8 +9,12 @@ import {
 
 import React from "react";
 import Link from "next/link"; // Import Link from next/link
+import { usePathname } from "next/navigation";
 
-function BreadcrumbContainer({ pathName }) {
+function BreadcrumbContainer() {
+
+  const pathName = usePathname()
+
   // Parse the pathName into an array of path segments
   const pathParts = pathName.split("/").filter(Boolean);
 
@@ -31,7 +34,7 @@ function BreadcrumbContainer({ pathName }) {
       <React.Fragment key={index}>
         {index > 0 && (
           <BreadcrumbSeparator>
-            <Slash />
+            {">"}
           </BreadcrumbSeparator>
         )}
         <BreadcrumbItem>
@@ -55,7 +58,7 @@ function BreadcrumbContainer({ pathName }) {
             <BreadcrumbLink as={Link} href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <Slash />
+          {">"}
           </BreadcrumbSeparator>
           {/* Render dynamic breadcrumb items */}
           {breadcrumbItems}
