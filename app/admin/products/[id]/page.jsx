@@ -43,11 +43,45 @@ export default function Page() {
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [selectedBrand, setSelectedBrand] = useState('');
 
-    
+    // Fetch product data when component mounts
+    const handleFetchProduct = async () => {
+        try {
+          const response = await api.get(`/products/get-product`, {
+            params: { id }
+          });
+          const data = response.data;
+          setProductData(data); // Update the state with product data
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+    };
+
+    useEffect(() => {
+      handleFetchProduct();
+    }, []);
+
+    // Update price states when productData changes
+    useEffect(() => {
+      if (productData) {
+        setFormData({
+          productName: productData.productName,
+          description: productData.description,
+        });
+        
+        setCategory(productData.category);
+        setPricePerPiece(productData.pricePerPiece || '');
+        setPriceInFeet(productData.priceInFeet || '');
+        setPriceInTonne(productData.priceInTonne || '');
+        setPricePerBag(productData.pricePerBag || '');
+        setSelectedBrand(productData?.brand || '');
+        setSelectedSubcategory(productData?.subCategory || " ")
+      }
+    }, [productData]);
+
     // Save product in database
     async function saveProductInDatabase() {
       try {
-        const response = await api.post(`/products/add-product`, {
+        const response = await api.put(`/products/update-product?id=${id}`, {
           imagePath: imagePreview, 
           productName: formData.productName,
           pricePerPiece, 
@@ -86,7 +120,7 @@ export default function Page() {
               </Button>
             </Link>
             <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-              Add Your Product
+              Edit Your Product
             </h1>
             <ActionButtons saveProductInDatabase={saveProductInDatabase}/>
           </div>

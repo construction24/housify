@@ -51,8 +51,6 @@ export default function Page() {
   };
 
 
-
-
   useEffect(() => {    
     fetchProducts();
   }, [selectedTab]);

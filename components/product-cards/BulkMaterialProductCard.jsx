@@ -36,7 +36,7 @@ const BulkMaterialProductCard = ({
             <img
               src={imagePath}
               alt="this is product image"
-              className="w-full h-full"
+              className="w-[250px] h-[250px]"
             ></img>
           </div>
           <div className="py-5">
